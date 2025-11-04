@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage Name="RevitDesignAutomation" Description="Sample Plugin for Revit" Author="tutorials.autodesk.io">
+  <CompanyDetails Name="Joao Martins" Url="https://github.com/martinjoa" Email="joao.martins@autodesk.com"/>
+  <Components Description="Export geodata from Revit">
+    <RuntimeRequirements SeriesMax="R2026" SeriesMin="R2025" Platform="Revit" OS="Win64"/>
+    <ComponentEntry LoadOnRevitStartup="True" LoadOnCommandInvocation="False" AppDescription="Export geodata from Revit" ModuleName="./Contents/RevitPlugin.dll" Version="1.0.0" AppName="Export Geodata"/>
+  </Components>
+</ApplicationPackage>
