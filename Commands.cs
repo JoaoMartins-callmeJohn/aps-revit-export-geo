@@ -12,7 +12,7 @@ namespace RevitPlugin
 	public class Commands : IExternalDBApplication
 	{
 		//Path of the output file
-		string OUTPUT_FILE = "geodata.json";
+		string OUTPUT_FILE = Path.Combine("C:\\Users\\martinjoa\\source\\test", "geodata.json");
 
 		public ExternalDBApplicationResult OnStartup(ControlledApplication application)
 		{

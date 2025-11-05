@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <RevitAddIns>
   <AddIn Type="DBApplication">
     <Name>Export Geodata</Name>
@@ -6,9 +6,15 @@
     <Text>Revit for Automation</Text>
     <Description>Revit for Automation</Description>
     <VisibilityMode>AlwaysVisible</VisibilityMode>
-    <Assembly>.\RevitPlugin.dll</Assembly>
+    <Assembly>C:\Users\martinjoa\source\repos\aps-revit-export-geo\bin\Debug\RevitPlugin.dll</Assembly>
     <AddInId>000BD853-36E4-461f-9171-C5ACEDA4E723</AddInId>
     <VendorId>ADSK</VendorId>
     <VendorDescription>Autodesk, Inc, www.autodesk.com</VendorDescription>
   </AddIn>
 </RevitAddIns>
+
+
+
+
+
+

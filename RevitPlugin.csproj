@@ -10,7 +10,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-  <StartWorkingDirectory>C:\Users\martinjoa\source\test</StartWorkingDirectory>
+    <!-- <StartWorkingDirectory>C:\Users\martinjoa\source\test\</StartWorkingDirectory>-->
     <!-- Edit this path to match your Revit executable path -->
     <RevitPath>C:\Program Files\Autodesk\Revit 2025</RevitPath>
     <!-- Edit this path to match your Revit Addins path -->
@@ -19,12 +19,13 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <OutputPath>$(RevitAddinsPath)\</OutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\bin\Debug\</OutputPath>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PreBuildEvent>powershell -NoProfile -ExecutionPolicy Bypass -File "$(MSBuildProjectDirectory)\UpdateAddinPath.ps1" -AddinFile "$(MSBuildProjectDirectory)\GeoExportDebug.addin" -AssemblyPath "$(OutputPath)RevitPlugin.dll"</PreBuildEvent>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\bin\Release\</OutputPath>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   
@@ -56,12 +57,11 @@
     -->
   </ItemGroup>
   
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <!-- Copy GeoExportDebug.addin to output directory during Debug builds -->
-    <None Include="GeoExportDebug.addin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  <Target Name="CopyGeoExportDebugAddin" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <ItemGroup>
+      <AddinDestinationFile Include="$(RevitAddinsPath)\GeoExportDebug.addin" />
+    </ItemGroup>
+    <Exec Command="@(AddinDestinationFile->'if not exist &quot;%(FullPath)&quot; copy &quot;GeoExportDebug.addin&quot; &quot;%(FullPath)&quot;')" />
+  </Target>
 
-  
 </Project>
